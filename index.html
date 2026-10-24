@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A calm, focused workspace for technical interview practice.">
+  <title>Clearstep — AI Interview Coach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">C</span><span>clearstep</span></a>
+    <div class="topbar-note">Technical interview practice, made thoughtful.</div>
+  </header>
+  <main class="shell">
+    <section id="setup-view" class="view">
+      <div class="intro">
+        <p class="eyebrow">AI interview coach</p>
+        <h1>Practice with clarity.<br><em>Arrive prepared.</em></h1>
+        <p class="lede">A focused mock interview for the role you want next. Your answers stay in this session until you choose to review them.</p>
+      </div>
+      <form id="setup-form" class="card setup-card">
+        <div class="section-heading"><span class="step">01</span><div><h2>Set your direction</h2><p>Tell us where you are headed.</p></div></div>
+        <div class="form-grid">
+          <label>Full name<input id="name" required placeholder="e.g. Aisha Mehta"></label>
+          <label>Branch / specialization<input id="branch" required placeholder="e.g. Computer Science"></label>
+          <label>Target company<input id="company" required placeholder="e.g. Atlassian"></label>
+          <label>Target role<input id="role" required placeholder="e.g. Backend Engineer"></label>
+        </div>
+        <label>Interview focus<select id="domain" required></select></label>
+        <label>Number of questions<select id="question-count" required><option value="3">3 questions</option><option value="5">5 questions</option></select><small class="field-hint">Choose 3 for a quick practice or 5 for a fuller mock interview.</small></label>
+        <button class="primary-button" type="submit">Build my interview <span>→</span></button>
+        <p class="form-note">Questions are selected from 10 predefined questions for your chosen domain.</p>
+      </form>
+      <div class="sample-strip"><span class="sample-dot"></span><strong>Sample profile ready</strong><span>Try “Maya Sharma · Computer Science · Stripe · Frontend Engineer”</span><button id="sample-btn" type="button">Use sample</button></div>
+    </section>
+
+    <section id="interview-view" class="view hidden">
+      <div class="interview-header"><div><p class="eyebrow">Live practice · <span id="domain-label"></span></p><h1 id="welcome-title">Let’s get started.</h1></div><div class="progress-label"><span id="question-number">1</span> of <span id="question-total">3</span></div></div>
+      <div class="progress-track"><div id="progress-bar"></div></div>
+      <div class="interview-layout">
+        <article class="card question-card">
+          <div class="question-meta"><span id="question-level" class="pill">Core</span><span>Take your time</span></div>
+          <h2 id="question-text"></h2>
+          <div class="answer-tools"><button type="button" id="voice-btn" class="tool-button"><span class="mic-icon">●</span><span id="voice-label">Answer by voice</span></button><span class="tool-hint">or type below</span></div>
+          <textarea id="answer-input" rows="9" placeholder="Structure your thinking, then write your answer here..."></textarea>
+          <div class="answer-footer"><span id="word-count">0 words</span><button type="button" id="next-btn" class="primary-button">Save & continue <span>→</span></button></div>
+        </article>
+        <aside class="side-note"><div class="quote-mark">“</div><p>Strong answers make their thinking visible. Start with your approach, then explain the trade-offs.</p><span>INTERVIEWER NOTE</span></aside>
+      </div>
+    </section>
+
+    <section id="loading-view" class="view hidden loading-view"><div class="loader"></div><p class="eyebrow">Reviewing your session</p><h1>Turning your answers<br><em>into a useful next step.</em></h1><p class="lede">Your transcript is being assessed for technical accuracy, reasoning, and communication.</p></section>
+
+    <section id="results-view" class="view hidden">
+      <div class="results-heading"><div><p class="eyebrow">Session complete</p><h1>Here’s your <em>clearstep.</em></h1><p id="results-summary" class="lede"></p></div><div class="results-actions"><button id="download-btn" class="secondary-button">Download session notes</button><button id="restart-btn" class="secondary-button">Practice again</button></div></div>
+      <div class="score-grid"><div class="card score-card"><span class="eyebrow">Overall score</span><div class="score-number"><span id="overall-score">—</span><small>/10</small></div><div class="score-line"><div id="score-fill"></div></div><p>Based on technical accuracy, reasoning, and clarity.</p></div><div class="card profile-card"><span class="eyebrow">Your session</span><h3 id="profile-name"></h3><p id="profile-details"></p><div class="profile-rule"></div><p class="muted">Keep practicing this domain to make your progress compound.</p></div></div>
+      <div class="insights-grid"><div class="card insight-card"><span class="insight-icon strength">+</span><h3>What you did well</h3><ul id="strengths"></ul></div><div class="card insight-card"><span class="insight-icon growth">↗</span><h3>Room to grow</h3><ul id="weaknesses"></ul></div><div class="card insight-card wide"><span class="insight-icon plan">◎</span><h3>Your next steps</h3><ul id="suggestions"></ul></div></div>
+      <div class="card breakdown-card"><div class="section-heading"><span class="step">02</span><div><h2>Question breakdown</h2><p>Small, specific feedback is easier to act on.</p></div></div><div id="breakdown"></div></div>
+    </section>
+  </main>
+  <footer><span>clearstep / AI interview coach</span><span>Built for focused practice</span></footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>
